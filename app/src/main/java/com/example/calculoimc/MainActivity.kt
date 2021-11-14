@@ -69,8 +69,10 @@ class MainActivity : AppCompatActivity() {
         binding.calcular.setOnClickListener {
            val x:String= binding.peso.text.toString()
             val y:String =  binding.altura.text.toString()
+
             val alt:Double = y.toDouble()/100
             val alturaReal:Double = alt*alt
+
             val imc:Double = x.toDouble()/alturaReal
             binding.resultado.text = imc.toString()
             if(imc<16){
@@ -89,8 +91,10 @@ class MainActivity : AppCompatActivity() {
                 binding.aperte.text = "Obesidade grau 2, severa"
             }else if( imc>40){
                 binding.aperte.text = "Obesidade grau 3, mórbida"
+            }else{
+                Toast.makeText(this, "Erro no calculo", Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(this, imc.toString(), Toast.LENGTH_SHORT).show()
+
         }
 
     }
@@ -142,15 +146,19 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i("fun", "onRestore")
-        binding.resultado.text = savedInstanceState.getString("valor Resultado")
-        binding.aperte.text = savedInstanceState.getString("valor aperte")
+        binding.resultado.text = savedInstanceState.getString("valorR")
+        binding.aperte.text = savedInstanceState.getString("valorA")
+        binding.altura.text = savedInstanceState.getString("valorAlt")
+        binding.peso.text = savedInstanceState.getString("valorP")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.i("fun", "onSave")
-        outState.putString("valor Resultado", binding.resultado.text.toString())
-        outState.putString("valor aperte", binding.aperte.text.toString())
+        outState.putString("valorR", binding.resultado.text.toString())
+        outState.putString("valorA", binding.aperte.text.toString())
+        outState.putString("valorP", binding.peso.text.toString())
+        outState.putString("valorAlt", binding.altura.text.toString())
 
     }
 

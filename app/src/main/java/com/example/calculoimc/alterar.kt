@@ -30,11 +30,22 @@ class alterar : AppCompatActivity() {
         if(texto.toString() == "peso"){
             val editP = param?.getString("Alterar_peso")
             binding.recebe.setText("peso")
-            binding.digiteNumero.setText(editP)
+            if(editP.toString()=="0,0"){
+                binding.digiteNumero.setText("")
+            }else{
+                binding.digiteNumero.setText(editP)
+            }
+
         }else{
             val editA = param?.getString("Alterar_altura")
             binding.recebe.setText("altura")
-            binding.digiteNumero.setText(editA)
+            if(editA.toString()=="0,0"){
+                binding.digiteNumero.setText("")
+            }else{
+                binding.digiteNumero.setText(editA)
+            }
+
+
         }
 
         binding.alterar.setOnClickListener{

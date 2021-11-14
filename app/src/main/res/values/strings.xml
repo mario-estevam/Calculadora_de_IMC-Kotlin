@@ -6,5 +6,10 @@
     <string name="peso">Peso:</string>
     <string name="calculadora_imc">Calculadora IMC</string>
     <string name="number">number</string>
+    <string name="alterar_peso">Alterar peso</string>
+    <string name="alterar_altura">Alterar altura</string>
+    <string name="calcular">Calcular</string>
+    <string name="resultado">Resultado</string>
+    <string name="aperte_o_bot_o_calcular">Aperte o botão calcular!</string>
 
 </resources>
