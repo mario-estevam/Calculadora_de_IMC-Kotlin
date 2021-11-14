@@ -12,13 +12,12 @@ import com.example.calculoimc.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMainBinding
-    val pessoa = Pessoa(1.80, "0,0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.pessoa = pessoa
+
 
         val activityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             when(it.resultCode){
@@ -143,13 +142,15 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i("fun", "onRestore")
-
+        binding.resultado.text = savedInstanceState.getString("valor Resultado")
+        binding.aperte.text = savedInstanceState.getString("valor aperte")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.i("fun", "onSave")
-
+        outState.putString("valor Resultado", binding.resultado.text.toString())
+        outState.putString("valor aperte", binding.aperte.text.toString())
 
     }
 
