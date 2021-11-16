@@ -109,13 +109,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
     override fun onStart() {
         super.onStart()
         Log.i("fun", "onstart")
+        var preferereces = getSharedPreferences("MY_PREFS", MODE_PRIVATE)
+        binding.resultado.text = preferereces.getString("resultado", "RESULTADO")
+        binding.aperte.text =  preferereces.getString("aperte", "Aperte o botão calcular!")
+
     }
 
     override fun onResume() {
@@ -131,6 +131,11 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.i("fun", "onstop")
+        var preferences = getSharedPreferences("MY_PREFS", MODE_PRIVATE)
+        var salvar = preferences.edit()
+        salvar.putString("resultado", binding.resultado.text.toString())
+        salvar.putString("aperte", binding.aperte.text.toString())
+        salvar.apply()
     }
 
     override fun onRestart() {
